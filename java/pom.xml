@@ -10,6 +10,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <aws.sdk.version>2.59.2</aws.sdk.version>
     <junit.version>6.1.3</junit.version>
+    <surefire.version>3.6.1</surefire.version>
   </properties>
   <dependencies>
     <dependency>
@@ -34,7 +35,14 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.6.1</version>
+        <version>${surefire.version}</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-junit-platform</artifactId>
+            <version>${surefire.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
   </build>
