@@ -1,15 +1,15 @@
 [build-system]
-requires = ["setuptools>=69"]
+requires = ["setuptools>=84.2.1"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "emulator-sample"
 version = "0.1.0"
 requires-python = ">=3.10"
-dependencies = ["boto3==1.36.26"]
+dependencies = ["boto3==1.44.4"]
 
 [project.optional-dependencies]
-dev = ["pytest==8.3.4"]
+dev = ["pytest==9.2.0"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
