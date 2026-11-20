@@ -21,11 +21,11 @@ Install the selected example's dependencies, then run its test through the CLI:
 | Python / Boto3 | `python -m pip install -e 'python[dev]'` | `npx awesome-emulator run --telemetry off -- python -m pytest -q python/tests` |
 | Go v2 | *(resolved by Go Modules)* | `npx awesome-emulator run --telemetry off -- go -C go test ./...` |
 | JavaScript v3 | `npm ci --prefix javascript` | `npx awesome-emulator run --telemetry off -- node --test javascript/s3-store.test.js` |
-| Java 2.x | *(Maven resolves dependencies)* | `npx awesome-emulator run --telemetry off -- mvn -B -f java/pom.xml test` |
-| Rust | *(resolved by Cargo)* | `npx awesome-emulator run --telemetry off -- cargo test --manifest-path rust/Cargo.toml` |
-| .NET | *(NuGet resolves dependencies)* | `npx awesome-emulator run --telemetry off -- dotnet test dotnet/tests/Sample.Tests.csproj` |
+| Java 2.x | *(Maven resolves dependencies)* | `npx awesome-emulator run --telemetry off --sdk java-v2 -- mvn -B -f java/pom.xml test` |
+| Rust | *(resolved by Cargo)* | `npx awesome-emulator run --telemetry off --sdk rust -- cargo test --manifest-path rust/Cargo.toml` |
+| .NET | *(NuGet resolves dependencies)* | `npx awesome-emulator run --telemetry off --sdk dotnet -- dotnet test dotnet/tests/Sample.Tests/Sample.Tests.csproj` |
 
-The CLI starts and stops the emulator around the child test process and provides the endpoint, credentials, region, and certificate settings. For Java and Rust, this includes the JVM trust store and `SSL_CERT_FILE` settings needed for the emulator's HTTPS certificate.
+The CLI starts and stops the emulator around the child test process and provides the endpoint, credentials, region, and certificate settings. Java, Rust, and .NET examples pass `--sdk` so the CLI also configures their language-specific trust store or certificate variable.
 
 ## GitHub Actions
 
