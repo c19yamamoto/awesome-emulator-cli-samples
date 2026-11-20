@@ -21,11 +21,11 @@ Install the selected example's dependencies, then run its test through the CLI:
 | Python / Boto3 | `python -m pip install -e 'python[dev]'` | `npx awesome-emulator run --telemetry off -- python -m pytest -q python/tests` |
 | Go v2 | *(resolved by Go Modules)* | `npx awesome-emulator run --telemetry off -- go -C go test ./...` |
 | JavaScript v3 | `npm ci --prefix javascript` | `npx awesome-emulator run --telemetry off -- node --test javascript/s3-store.test.js` |
-| Java 2.x | *(Maven resolves dependencies)* | `npx awesome-emulator run --telemetry off --sdk java-v2 -- mvn -B -f java/pom.xml test` |
+| Java 2.x | `mvn -B -f java/pom.xml -DskipTests test` | `npx awesome-emulator run --telemetry off --sdk java-v2 -- mvn -o -B -f java/pom.xml test` |
 | Rust | *(resolved by Cargo)* | `npx awesome-emulator run --telemetry off --sdk rust -- cargo test --manifest-path rust/Cargo.toml` |
 | .NET | *(NuGet resolves dependencies)* | `npx awesome-emulator run --telemetry off --sdk dotnet -- dotnet test dotnet/tests/Sample.Tests/Sample.Tests.csproj` |
 
-The CLI starts and stops the emulator around the child test process and provides the endpoint, credentials, region, and certificate settings. Java, Rust, and .NET examples pass `--sdk` so the CLI also configures their language-specific trust store or certificate variable.
+The CLI starts and stops the emulator around the child test process and provides the endpoint, credentials, region, and certificate settings. Java, Rust, and .NET examples pass `--sdk` so the CLI also configures their language-specific trust store or certificate variable. The Java example resolves Maven dependencies before starting the CLI, then runs tests offline so Maven Central uses the normal JVM trust store.
 
 ## GitHub Actions
 

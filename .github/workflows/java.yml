@@ -33,4 +33,6 @@ jobs:
           cache: maven
           cache-dependency-path: java/pom.xml
       - run: npm ci
-      - run: npx awesome-emulator run --telemetry off --sdk java-v2 -- mvn -B -f java/pom.xml test
+      # The CLI truststore is for AWS Emulator; resolve Maven artifacts before enabling it.
+      - run: mvn -B -f java/pom.xml -DskipTests test
+      - run: npx awesome-emulator run --telemetry off --sdk java-v2 -- mvn -o -B -f java/pom.xml test
