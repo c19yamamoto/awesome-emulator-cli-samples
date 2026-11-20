@@ -22,10 +22,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v4.4.0
+      - uses: actions/setup-node@v4.4.0
         with:
           node-version: 22
       - uses: dtolnay/rust-toolchain@stable
       - run: npm ci
-      - run: npx awesome-emulator run --telemetry off -- cargo test --manifest-path rust/Cargo.toml
+      - run: npx awesome-emulator run --telemetry off --sdk rust -- cargo test --manifest-path rust/Cargo.toml

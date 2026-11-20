@@ -22,12 +22,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v4.4.0
+      - uses: actions/setup-node@v4.4.0
         with:
           node-version: 22
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v4.3.1
         with:
           dotnet-version: "8.0.x"
       - run: npm ci
-      - run: npx awesome-emulator run --telemetry off -- dotnet test dotnet/tests/Sample.Tests/Sample.Tests.csproj
+      - run: npx awesome-emulator run --telemetry off --sdk dotnet -- dotnet test dotnet/tests/Sample.Tests/Sample.Tests.csproj
