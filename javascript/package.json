@@ -1,0 +1,8 @@
+{
+  "name": "aws-emulator-javascript-sample",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.826.0"
+  }
+}

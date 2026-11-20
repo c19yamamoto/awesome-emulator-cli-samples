@@ -1,0 +1,33 @@
+name: .NET
+
+on:
+  push:
+    paths:
+      - "dotnet/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/dotnet.yml"
+  pull_request:
+    paths:
+      - "dotnet/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/dotnet.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - run: npm ci
+      - run: npx awesome-emulator run --telemetry off -- dotnet test dotnet/tests/Sample.Tests/Sample.Tests.csproj

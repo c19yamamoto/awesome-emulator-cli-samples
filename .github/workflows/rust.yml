@@ -1,0 +1,31 @@
+name: Rust
+
+on:
+  push:
+    paths:
+      - "rust/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/rust.yml"
+  pull_request:
+    paths:
+      - "rust/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/rust.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: dtolnay/rust-toolchain@stable
+      - run: npm ci
+      - run: npx awesome-emulator run --telemetry off -- cargo test --manifest-path rust/Cargo.toml

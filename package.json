@@ -1,0 +1,8 @@
+{
+  "name": "awesome-emulator-cli-samples",
+  "private": true,
+  "description": "Polyglot AWS Emulator examples driven by awesome-emulator-cli",
+  "devDependencies": {
+    "awesome-emulator-cli": "0.1.1"
+  }
+}

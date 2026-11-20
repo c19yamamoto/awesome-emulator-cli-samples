@@ -1,0 +1,11 @@
+[package]
+name = "aws-emulator-sample"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+aws-config = "1.5.10"
+aws-sdk-s3 = "1.69.0"
+
+[dev-dependencies]
+tokio = { version = "1.43.0", features = ["macros", "rt-multi-thread"] }

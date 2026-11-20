@@ -1,0 +1,33 @@
+name: Go v2
+
+on:
+  push:
+    paths:
+      - "go/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/go.yml"
+  pull_request:
+    paths:
+      - "go/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/go.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - run: npm ci
+      - run: npx awesome-emulator run --telemetry off -- go -C go test ./...
