@@ -3,6 +3,6 @@
   "private": true,
   "description": "Polyglot AWS Emulator examples driven by awesome-emulator-cli",
   "devDependencies": {
-    "awesome-emulator-cli": "0.6.2"
+    "awesome-emulator-cli": "0.6.6"
   }
 }
