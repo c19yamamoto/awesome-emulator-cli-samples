@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "emulator-sample"
 version = "0.1.0"
 requires-python = ">=3.10"
-dependencies = ["boto3==1.44.4"]
+dependencies = ["boto3==1.44.8"]
 
 [project.optional-dependencies]
 dev = ["pytest==9.2.0"]
